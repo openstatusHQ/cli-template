@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://www.openstatus.dev/schema.json
 
-monitor1:
+mcp-server:
   name: "HF MCP Server "
   description: "Hugging Face MCP server monitoring"
   frequency: "1m"

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://www.openstatus.dev/schema.json
+uptime-monitor:
+  name: "Uptime Monitor"
+  description: "Uptime monitoring example"
+  frequency: "10m"
+  active: true
+  regions:
+    - iad
+    - ams
+    - syd
+    - jnb
+    - gru
+  retry: 3
+  kind: http
+  request:
+    url: https://openstat.us
+    method: GET
+    headers:
+      User-Agent: OpenStatus
+  assertions:
+    - kind: statusCode
+      compare: eq
+      target: 200

@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://www.openstatus.dev/schema.json
+synthetic-monitor:
+  name: "Synthetic Monitor"
+  description: "Synthetic monitoring example"
+  frequency: 30s
+  active: true
+  regions:
+    - arn
+    - ams
+    - atl
+    - bog
+    - bom
+    - bos
+    - cdg
+    - den
+    - dfw
+    - ewr
+    - eze
+    - fra
+    - gdl
+    - gig
+    - gru
+    - hkg
+    - iad
+    - jnb
+    - lax
+    - lhr
+    - mad
+    - mia
+    - nrt
+    - ord
+    - otp
+    - phx
+    - scl
+    - sea
+    - sin
+    - sjc
+    - syd
+    - yul
+    - yyz
+  retry: 3
+  kind: http
+  degradedAfter: 30000
+  timeout:  45000
+  request:
+    url: https://openstat.us
+    method: GET
+    headers:
+      User-Agent: OpenStatus
+  assertions:
+    - kind: statusCode
+      compare: eq
+      target: 200
