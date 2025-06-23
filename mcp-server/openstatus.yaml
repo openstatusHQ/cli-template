@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://www.openstatus.dev/schema.json
+
+monitor1:
+  name: "HF MCP Server "
+  description: "Hugging Face MCP server monitoring"
+  frequency: "1m"
+  active: true
+  regions: ["iad", "ams", "lax"]
+  retry: 3
+  kind: http
+  request:
+    url: https://hf.co/mcp
+    method: POST
+    body: >
+      {
+        "jsonrpc": "2.0",
+        "id": "openstatus",
+        "method": "ping"
+      }
+    headers:
+      User-Agent: OpenStatus
+      Accept: application/json, text/event-stream
+      Content-Type: application/json
+  assertions:
+    - kind: statusCode
+      compare: eq
+      target: 200
+    - kind: textBody
+      compare: eq
+      target: '{"result":{},"jsonrpc":"2.0","id":"openstatus"}'
