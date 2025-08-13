@@ -1,4 +1,4 @@
-# OpenStatus Starter And Templace
+# OpenStatus Starter And Template
 
 
 ## Requirement
