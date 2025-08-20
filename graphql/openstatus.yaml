@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://www.openstatus.dev/schema.json
+uptime-monitor:
+  name: "Graphql"
+  description: "GitHub GraphQL API"
+  frequency: "10m"
+  active: true
+  regions:
+    - iad
+    - ams
+    - syd
+    - jnb
+    - gru
+  retry: 3
+  kind: http
+  request:
+    url: https://api.github.com/graphql
+    method: POST
+    headers:
+      User-Agent: OpenStatus
+      Authorization: Bearer YOUR_TOKEN_HERE
+    body: |
+      {
+        "query": "query { viewer { login }}"
+      }
